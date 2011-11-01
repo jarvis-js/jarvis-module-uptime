@@ -4,7 +4,7 @@
     { "name": "Alex Whitman", "email": "alex@alexwhitman.com" },
     { "name": "Paul Dixon", "email": "paul.dixon@mintbridge.co.uk" }
   ],
-  "name": "dobot-module-google",
+  "name": "dobot-module-uptime",
   "description": "Get bot uptime",
   "version": "0.0.0",
   "homepage": "http://dobot.github.com/",
