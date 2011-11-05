@@ -7,7 +7,7 @@ module.exports = function(bot) {
 		this.start = new Date().getTime();
 		var self = this;
 
-		bot.register(this.name, 'uptime', function(request, response) {
+		bot.registerCommand(this.name, 'uptime', function(request) {
 			var now = new Date().getTime();
 			var uptime_seconds = Math.floor((now - self.start) / 1000);
 			var intervals = {};
@@ -34,7 +34,7 @@ module.exports = function(bot) {
 				reply = elements.join(', ');
 			}
 
-			response('I\'ve been sentient for ' + reply);
+			bot.say(request.channel, 'I\'ve been sentient for ' + reply);
 		});
 	};
 
@@ -43,4 +43,4 @@ module.exports = function(bot) {
 	};
 
 	return uptimeModule;
-}
+};
