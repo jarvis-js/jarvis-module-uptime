@@ -34,7 +34,8 @@ module.exports = function(bot) {
 				reply = elements.join(', ');
 			}
 
-			bot.say(request.channel, 'I\'ve been sentient for ' + reply);
+			request.reply = 'I\'ve been sentient for ' + reply;
+			bot.respond(request);
 		});
 	};
 
