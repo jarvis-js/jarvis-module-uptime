@@ -1,15 +1,14 @@
 module.exports = function(bot) {
 
-	uptimeModule = new bot.Module();
+	var module = new bot.Module();
 
-	uptimeModule.load = function() {
+	module.load = function() {
 
-		this.start = new Date().getTime();
-		var self = this;
+		module.start = new Date().getTime();
 
 		bot.registerCommand(this.name, 'uptime', function(request) {
 			var now = new Date().getTime();
-			var uptime_seconds = Math.floor((now - self.start) / 1000);
+			var uptime_seconds = Math.floor((now - module.start) / 1000);
 			var intervals = {};
 			intervals.day = Math.floor(uptime_seconds / 86400);
 			intervals.hour = Math.floor((uptime_seconds % 86400) / 3600);
@@ -39,9 +38,9 @@ module.exports = function(bot) {
 		});
 	};
 
-	uptimeModule.numPlural = function(num) {
+	module.numPlural = function(num) {
 		return (num != 1) ? 's' : '';
 	};
 
-	return uptimeModule;
+	return module;
 };
