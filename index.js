@@ -19,7 +19,7 @@ module.exports = function(bot) {
 			for (var interval in intervals) {
 				var value = intervals[interval];
 				if (value > 0) {
-					elements.push(value + ' ' + interval + self.numPlural(value));
+					elements.push(value + ' ' + interval + module.numPlural(value));
 				}
 			}
 
