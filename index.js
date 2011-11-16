@@ -6,7 +6,7 @@ module.exports = function(bot) {
 
 		module.start = new Date().getTime();
 
-		bot.registerCommand(this.name, 'uptime', function(request) {
+		module.addCommand('uptime', function(request) {
 			var now = new Date().getTime();
 			var uptime_seconds = Math.floor((now - module.start) / 1000);
 			var intervals = {};
