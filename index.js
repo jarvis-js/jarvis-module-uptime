@@ -1,6 +1,4 @@
-module.exports = function(bot) {
-
-	var module = new bot.Module();
+module.exports = function(bot, module) {
 
 	module.load = function() {
 
@@ -42,5 +40,4 @@ module.exports = function(bot) {
 		return (num != 1) ? 's' : '';
 	};
 
-	return module;
 };
