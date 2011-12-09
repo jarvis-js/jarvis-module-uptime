@@ -30,7 +30,7 @@ module.exports = function(bot, module) {
 		}
 
 		request.reply = 'I\'ve been sentient for ' + reply;
-		bot.respond(request);
+		bot.reply(request);
 	});
 
 	module.numPlural = function(num) {
