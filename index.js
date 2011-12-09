@@ -1,3 +1,5 @@
+var os = require('os');
+
 module.exports = function(bot, module) {
 
 	module.start = new Date().getTime();
@@ -5,36 +7,44 @@ module.exports = function(bot, module) {
 	module.addCommand('uptime', function(request) {
 		var now = new Date().getTime();
 		var uptime_seconds = Math.floor((now - module.start) / 1000);
-		var intervals = {};
-		intervals.day = Math.floor(uptime_seconds / 86400);
-		intervals.hour = Math.floor((uptime_seconds % 86400) / 3600);
-		intervals.minute = Math.floor(((uptime_seconds % 86400) % 3600) / 60);
-		intervals.second = ((uptime_seconds % 86400) % 3600) % 60;
-
-		var elements = []
-		for (var interval in intervals) {
-			var value = intervals[interval];
-			if (value > 0) {
-				elements.push(value + ' ' + interval + module.numPlural(value));
-			}
-		}
-
-		var reply = '';
-		if (elements.length > 1) {
-			var last = elements.pop();
-			reply = elements.join(', ');
-			reply += ' and ' + last;
-		}
-		else {
-			reply = elements.join(', ');
-		}
-
-		request.reply = 'I\'ve been sentient for ' + reply;
+		request.reply = 'I\'ve been sentient for ' + secondsToString(uptime_seconds);
 		bot.reply(request);
 	});
 
-	module.numPlural = function(num) {
-		return (num != 1) ? 's' : '';
-	};
+	module.addCommand('system uptime', function(request) {
+		request.reply = 'System has been running for ' + secondsToString(Math.floor(os.uptime()));
+		bot.reply(request);
+	});
 
-};
+}
+
+function secondsToString(seconds) {
+	var intervals = {};
+	intervals.day = Math.floor(seconds / 86400);
+	intervals.hour = Math.floor((seconds % 86400) / 3600);
+	intervals.minute = Math.floor(((seconds % 86400) % 3600) / 60);
+	intervals.second = ((seconds % 86400) % 3600) % 60;
+
+	var elements = []
+	for (var interval in intervals) {
+		var value = intervals[interval];
+		if (value > 0) {
+			elements.push(value + ' ' + interval + numPlural(value));
+		}
+	}
+
+	var reply = '';
+	if (elements.length > 1) {
+		var last = elements.pop();
+		reply = elements.join(', ');
+		reply += ' and ' + last;
+	}
+	else {
+		reply = elements[0];
+	}
+	return reply;
+}
+
+function numPlural(num) {
+	return (num != 1) ? 's' : '';
+}
