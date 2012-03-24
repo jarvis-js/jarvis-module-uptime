@@ -16,7 +16,7 @@ module.exports = function(bot, module) {
 		bot.reply(request);
 	});
 
-}
+};
 
 function secondsToString(seconds) {
 	var intervals = {};
@@ -25,7 +25,7 @@ function secondsToString(seconds) {
 	intervals.minute = Math.floor(((seconds % 86400) % 3600) / 60);
 	intervals.second = ((seconds % 86400) % 3600) % 60;
 
-	var elements = []
+	var elements = [];
 	for (var interval in intervals) {
 		var value = intervals[interval];
 		if (value > 0) {
