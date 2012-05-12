@@ -4,16 +4,22 @@ module.exports = function(bot, module) {
 
 	module.start = new Date().getTime();
 
-	module.addCommand('uptime', function(request) {
-		var now = new Date().getTime();
-		var uptime_seconds = Math.floor((now - module.start) / 1000);
-		request.reply = 'I\'ve been sentient for ' + secondsToString(uptime_seconds);
-		bot.reply(request);
+	module.addCommand({
+		match: 'uptime',
+		func: function(request) {
+			var now = new Date().getTime();
+			var uptime_seconds = Math.floor((now - module.start) / 1000);
+			request.reply = 'I\'ve been sentient for ' + secondsToString(uptime_seconds);
+			bot.reply(request);
+		}
 	});
 
-	module.addCommand('system uptime', function(request) {
-		request.reply = 'System has been running for ' + secondsToString(Math.floor(os.uptime()));
-		bot.reply(request);
+	module.addCommand({
+		match: 'system uptime',
+		func: function(request) {
+			request.reply = 'System has been running for ' + secondsToString(Math.floor(os.uptime()));
+			bot.reply(request);
+		}
 	});
 
 };
