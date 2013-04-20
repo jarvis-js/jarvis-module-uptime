@@ -1,17 +1,19 @@
 {
-  "author": "Alex Whitman <alex@alexwhitman.com>",
-  "name": "dobot-module-uptime",
-  "description": "Get bot uptime",
-  "version": "0.0.0",
-  "homepage": "http://dobot.github.com/",
+  "name": "jarvis-module-uptime",
+  "version": "0.1.0",
+  "description": "Uptime module for Jarvis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dobot/dobot-module-uptime.git"
+    "url": "git://github.com/jarvis-js/jarvis-module-uptime.git"
   },
-  "keywords": ["bot"],
-  "engines": {
-    "node": ">=0.4.x"
-  },
-  "dependencies": {},
-  "devDependencies": {}
+  "keywords": [
+    "Jarvis",
+    "uptime"
+  ],
+  "author": "Alex Whitman <alex@alexwhitman.com>",
+  "license": "BSD"
 }

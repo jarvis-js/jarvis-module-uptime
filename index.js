@@ -1,26 +1,28 @@
+/*global module*/
+
 var os = require('os');
 
-module.exports = function(bot, module) {
+module.exports = function(jarvis, module) {
 
 	module.start = new Date().getTime();
 
-	module.addCommand({
+	module.addAction(module.createCommand({
+		name: 'uptime',
 		match: 'uptime',
-		func: function(request) {
+		func: function(message) {
 			var now = new Date().getTime();
 			var uptime_seconds = Math.floor((now - module.start) / 1000);
-			request.reply = 'I\'ve been sentient for ' + secondsToString(uptime_seconds);
-			bot.reply(request);
+			jarvis.reply(message, 'I\'ve been sentient for ' + secondsToString(uptime_seconds));
 		}
-	});
+	}));
 
-	module.addCommand({
+	module.addAction(module.createCommand({
+		name: 'system-uptime',
 		match: 'system uptime',
-		func: function(request) {
-			request.reply = 'System has been running for ' + secondsToString(Math.floor(os.uptime()));
-			bot.reply(request);
+		func: function(message) {
+			jarvis.reply(message, 'System has been running for ' + secondsToString(Math.floor(os.uptime())));
 		}
-	});
+	}));
 
 };
 
